@@ -1,41 +1,29 @@
-body{
-  background-image: linear-gradient(to right bottom, #0000ff, #00e6ff);
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
 *{
-  margin: auto;
+  margin: 0;
+  padding: 0;
+  font-family:Helvetica, sans-serif;
 }
-.card{
-  text-align:center;
-  background-color: #ffffff;
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid black;
-  border-radius: 5%;
-}
-button {
-  margin: 5px;
-  border-radius: 8px;
-  border: 1px solid #25a0c2;
-  padding: 0.6em 1.2em;
-  font-size: 1.3em;
-  font-weight: 500;
-  font-family: inherit;
-  color: #ffffff;
-  background-color: #00bfff;
-  cursor: pointer;
 
+body {
+
+  place-items: center;
+  line-height: 1.5;
+  font-weight: 400;
+  min-height: 100vh;
+  background-image: linear-gradient(to right bottom, #0000ff, #00e6ff);
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #titulo{
-  margin:30px;
-  color:#ffffff;
-  text-align:center;
-}
-p{
+  margin: 30px;
+  color: white;
+  font-size: 35px;
   text-align: center;
-  font-size: 2.5em;
-  color:#0000ff
 }
+

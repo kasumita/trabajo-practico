@@ -1,26 +1,15 @@
-import { useState } from "react";
-import "./App.css";
+import React from 'react';
+import Candidato from './components/Candidato';
+import "./app.css";
 
 function App() {
-  const [count1, setCount1] = useState(0);
-  const [count2, setCount2] = useState(0);
-
   return (
-    <>
-      <h2 id="titulo">Boca de urnas</h2>
-      <div className="card">
-        <h2>Candidato 1</h2>
-        <p>{count1}</p>
-        <button onClick={() => setCount1(count1+1)}>+</button>
-        <button onClick={() => count1>0?setCount1(count1-1):setCount1(count1)}>-</button>
-      </div>
-      <div className="card">
-        <h2>Candidato 2</h2>
-        <p>{count2}</p>
-        <button onClick={() => setCount2(count2+1)}>+</button>
-        <button onClick={() => count2>0?setCount2(count2-1):setCount2(count2)}>-</button>
-      </div>
-    </>
+    <div className="app">
+      <h2 id="titulo">Boca de Urnas</h2>
+     
+      <Candidato candidatoNumero={1} contadorInicial={0} />
+      <Candidato candidatoNumero={2} contadorInicial={0} />
+    </div>
   );
 }
 

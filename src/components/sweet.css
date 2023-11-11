@@ -1,0 +1,19 @@
+.swal-modal {
+    width: 350px;
+    background-image: linear-gradient(to right bottom, #86d4dd, rgb(95, 163, 253));
+    border:2px solid blue;
+    border-radius: 10px;
+}
+
+.swal-title {
+    color: black;  
+  }
+  
+  
+  .swal-button { 
+    color: #181717; 
+  }
+  
+  .swal-button:hover {
+    color: blue;
+  }
