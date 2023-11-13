@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boca De Urnas</title>
+
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica, sans-serif;
+      }
+
+      body {
+        place-items: center;
+        line-height: 1.5;
+        font-weight: 400;
+        min-height: 100vh;
+        background-image: linear-gradient(to right bottom, #0000ff, #00e6ff);
+      }
+
+      .app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #titulo {
+        margin: 15px;
+        color: white;
+        font-size: 35px;
+        text-align: center;
+      }
+
+      .card {
+        width: 250px;
+        height: 270px;
+        margin: 5px;
+        border: 1px solid black;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #fff;
+      }
+
+      .candi {
+        color: black;
+        font-size: 30px;
+        padding: 10px;
+      }
+
+      .contador {
+        color: blue;
+        font-size: 100px;
+      }
+
+      .boton {
+        width: 100px;
+        height: 40px;
+        border: 1px solid black;
+        background-color: deepskyblue;
+        margin: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .boton:hover {
+        background-color: blue;
+      }
+      
+      @media only screen and (max-width: 600px) {
+        .card {
+          width: 200px;
+          height: 245px;
+        }
+
+        .contador {
+          font-size: 70px;
+        }
+        .candi {
+          font-size: 25px;
+        }
+
+        .boton {
+          width: 70px;
+          height: 50px;
+        }
+
+        #titulo {
+          margin: 30px;
+          font-size: 30px;
+        }
+      }
+    </style>
+
+<script type="text/babel">
+  const { useState, useEffect } = React;
+
+  function App() {
+    return (
+      <div className="app">
+        <h2 id="titulo">Boca de Urnas</h2>
+        <Candidato candidatoNumero={1} contadorInicial={0} />
+        <Candidato candidatoNumero={2} contadorInicial={0} />
+      </div>
+    );
+  }
+
+  const Candidato = ({ candidatoNumero, contadorInicial }) => {
+    const [count, setCount] = useState(() => {
+      const storedCount = localStorage.getItem(
+        `candidato${candidatoNumero}`
+      );
+      return storedCount ? parseInt(storedCount, 10) : contadorInicial;
+    });
+
+    const handleDecrement = () => {
+  if (count > 0) {
+    if (window.confirm("¿Realmente quieres descontar un voto?")) {
+      setCount(count - 1);
+    }
+  } else {
+    alert("No puedes descontar más votos. El contador está en 0.");
+  }
+};
+
+    useEffect(() => {
+      localStorage.setItem(`candidato${candidatoNumero}`, count.toString());
+    }, [count, candidatoNumero]);
+
+    return (
+      <div className="card">
+        <h2 className="candi">Candidato {candidatoNumero}</h2>
+        <p className="contador">{count}</p>
+        <button className="boton" onClick={() => setCount(count + 1)}>
+          ➕
+        </button>
+        <button className="boton" onClick={handleDecrement}>
+          ➖
+        </button>
+      </div>
+    );
+  };
+
+  ReactDOM.render(<App />, document.getElementById('root'));
+</script>
+</head>
+
+<body>
+<div id="root"></div>
+</body>
+</html>
